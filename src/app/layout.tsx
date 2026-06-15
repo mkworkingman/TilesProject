@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Quicksand } from 'next/font/google'
+import Logo from '@/components/ui/Logo'
 import './globals.css'
 
 const quicksand = Quicksand({
@@ -21,7 +22,8 @@ export default function RootLayout({
         <html lang="en" className={`${quicksand.className} h-full antialiased`}>
             <body className="bg-base flex min-h-full flex-col">
                 <header className="bg-surface h-15 rounded-t-lg border-2"></header>
-                {children}
+                <Logo />
+                <main className="p-14">{children}</main>
             </body>
         </html>
     )
