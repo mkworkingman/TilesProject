@@ -1,7 +1,7 @@
 export default function Home() {
     return (
-        <div>
-            <h1>Home</h1>
+        <div className="uppercase">
+            <h1>Ceramic Tile Order Form</h1>
         </div>
     )
 }
