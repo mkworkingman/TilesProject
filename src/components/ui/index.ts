@@ -1,3 +1,3 @@
 export { default as CustomInput } from './CustomInput'
 export { default as CustomTextarea } from './CustomTextarea'
-export { default as Logo } from './Logo'
+export { default as OrderFormLogo } from './OrderFormLogo'
