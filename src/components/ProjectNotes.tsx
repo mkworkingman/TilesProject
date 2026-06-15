@@ -1,5 +1,5 @@
-import CustomInput from './ui/CustomInput'
+import { CustomTextarea } from '@/components/ui'
 
 export default function ProjectNotes() {
-    return <CustomInput label="Customer name:" name="name" autoComplete="name" />
+    return <CustomTextarea label="Project name / Notes:" name="notes" indent={200} />
 }

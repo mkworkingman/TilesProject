@@ -1,5 +1,4 @@
-import CustomInput from './ui/CustomInput'
-import CustomTextArea from './ui/CustomTextarea'
+import { CustomInput, CustomTextarea } from '@/components/ui'
 
 export default function Summary() {
     return (
@@ -10,10 +9,11 @@ export default function Summary() {
                     <CustomInput label="Phone:" name="phone" type="tel" autoComplete="tel" />
                     <CustomInput label="Email:" name="email" type="email" autoComplete="email" />
                 </div>
-                <CustomTextArea
+                <CustomTextarea
                     label="Shipping Address:"
                     name="address"
                     autoComplete="shipping street-address"
+                    indent={160}
                 />
                 <button>Place secure order</button>
             </form>
