@@ -4,3 +4,9 @@
 body {
     font-family: var(--font-archivo-black), sans-serif;
 }
+
+@layer components {
+    .cart-table :is(th, td) {
+        @apply border-2;
+    }
+}

@@ -11,55 +11,53 @@ export default function Summary() {
     const [state, formAction, pending] = useActionState(sendData, null)
 
     return (
-        <div className="uppercase">
-            <form action={formAction} id="send-form">
-                <CustomInput
-                    label="Customer name:"
-                    name="name"
-                    autoComplete="name"
-                    defaultValue={state?.rawData?.name}
-                    error={state?.errors?.name?.[0]}
-                />
+        <form action={formAction} id="send-form">
+            <CustomInput
+                label="Customer name:"
+                name="name"
+                autoComplete="name"
+                defaultValue={state?.rawData?.name}
+                error={state?.errors?.name?.[0]}
+            />
 
-                <div className="grid grid-cols-2 gap-3">
-                    <div>
-                        <CustomInput
-                            label="Phone:"
-                            name="phone"
-                            type="tel"
-                            autoComplete="tel"
-                            inputMode="tel"
-                            defaultValue={state?.rawData?.phone}
-                            error={state?.errors?.phone?.[0]}
-                            onChange={handlePhoneChange}
-                        />
-                    </div>
-                    <div>
-                        <CustomInput
-                            label="Email:"
-                            name="email"
-                            type="email"
-                            autoComplete="email"
-                            defaultValue={state?.rawData?.email}
-                            error={state?.errors?.email?.[0]}
-                        />
-                    </div>
+            <div className="grid grid-cols-2 gap-3">
+                <div>
+                    <CustomInput
+                        label="Phone:"
+                        name="phone"
+                        type="tel"
+                        autoComplete="tel"
+                        inputMode="tel"
+                        defaultValue={state?.rawData?.phone}
+                        error={state?.errors?.phone?.[0]}
+                        onChange={handlePhoneChange}
+                    />
                 </div>
+                <div>
+                    <CustomInput
+                        label="Email:"
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                        defaultValue={state?.rawData?.email}
+                        error={state?.errors?.email?.[0]}
+                    />
+                </div>
+            </div>
 
-                <CustomTextarea
-                    label="Shipping Address:"
-                    name="address"
-                    autoComplete="shipping street-address"
-                    indent={160}
-                    defaultValue={state?.rawData?.address}
-                    error={state?.errors?.address?.[0]}
-                    required
-                />
+            <CustomTextarea
+                label="Shipping Address:"
+                name="address"
+                autoComplete="shipping street-address"
+                indent={160}
+                defaultValue={state?.rawData?.address}
+                error={state?.errors?.address?.[0]}
+                required
+            />
 
-                <button type="submit" disabled={pending}>
-                    {pending ? 'Pending, please wait...' : 'Place secure order'}
-                </button>
-            </form>
-        </div>
+            <button className="uppercase" type="submit" disabled={pending}>
+                {pending ? 'Pending, please wait...' : 'Place secure order'}
+            </button>
+        </form>
     )
 }

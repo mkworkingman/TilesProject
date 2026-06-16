@@ -1,4 +1,4 @@
-import { Summary, ProjectNotes } from '@/components'
+import { Summary, ProjectNotes, Cart } from '@/components'
 import { OrderFormLogo } from '@/components/ui'
 
 export default function Home() {
@@ -7,6 +7,7 @@ export default function Home() {
             <OrderFormLogo />
             <Summary />
             <ProjectNotes />
+            <Cart />
         </div>
     )
 }
