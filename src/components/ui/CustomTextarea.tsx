@@ -17,13 +17,14 @@ export default function CustomTextarea({ label, name, indent = 0, ...props }: Cu
         <div className="relative [--textarea-color:var(--color-black)] focus-within:[--textarea-color:var(--color-blue-500)]">
             <label
                 htmlFor={name}
-                className="absolute top-1 left-0 self-end leading-none text-(--textarea-color)"
+                className="absolute top-1 left-0 cursor-pointer self-end leading-none text-(--textarea-color)"
             >
                 {label}
             </label>
             <textarea
                 {...props}
                 id={name}
+                name={name}
                 className="w-full resize-none overflow-y-hidden outline-none"
                 onInput={handleInput}
                 required
