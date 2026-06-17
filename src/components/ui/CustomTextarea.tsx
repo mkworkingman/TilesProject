@@ -46,7 +46,6 @@ export default function CustomTextarea({
                         background: `linear-gradient(to bottom, var(--textarea-color) 0 2px, transparent 2px 24px) 0 0 / 100% 24px`,
                     }}
                 />
-                <p className="text-amber-800">{error}</p>
             </div>
             {error && <p className="text-amber-800">{error}</p>}
         </>

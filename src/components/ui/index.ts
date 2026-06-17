@@ -1,3 +1,5 @@
 export { default as CustomInput } from './CustomInput'
 export { default as CustomTextarea } from './CustomTextarea'
 export { default as OrderFormLogo } from './OrderFormLogo'
+export { default as Header } from './Header'
+export { default as AddTile } from './AddTile'

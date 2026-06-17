@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Quicksand } from 'next/font/google'
 import './globals.css'
 import StoreProvider from '@/store/StoreProvider'
+import { Header } from '@/components/ui'
 
 const quicksand = Quicksand({
     subsets: ['latin'],
@@ -22,7 +23,7 @@ export default function RootLayout({
         <html lang="en" className={`${quicksand.className} h-full antialiased`}>
             <body className="bg-base flex min-h-full flex-col">
                 <StoreProvider>
-                    <header className="bg-surface h-15 rounded-t-lg border-2"></header>
+                    <Header />
                     <main className="p-14">{children}</main>
                 </StoreProvider>
             </body>

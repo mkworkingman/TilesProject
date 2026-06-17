@@ -1,8 +1,12 @@
 'use client'
-// import { useAppSelector } from '@/store/hooks'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
+import { addTile, removeTile, selectActiveTiles, selectTotals } from '@/store/tilesSlice'
+import { AddTile } from './ui'
 
 export default function Cart() {
-    // const tiles = useAppSelector((s) => s.tiles.items)
+    const tiles = useAppSelector(selectActiveTiles)
+    const { subtotal, shipping, grandTotal } = useAppSelector(selectTotals)
+    const dispatch = useAppDispatch()
 
     return (
         <>
@@ -17,24 +21,40 @@ export default function Cart() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>R1C1</td>
-                        <td>R1C2</td>
-                        <td>[ 10 ]</td>
-                        <td>[ 28.00$ ]</td>
-                        <td>
-                            <button className="cursor-pointer border-2 px-2 py-1">+</button>
-                            <button className="cursor-pointer border-2 px-2 py-1">-</button>
-                        </td>
-                    </tr>
+                    {tiles.map((tile) => (
+                        <tr key={tile.id}>
+                            <td>
+                                {tile.collection.name}
+                                <br />
+                                {tile.collection.collectionUrl}
+                            </td>
+                            <td>{tile.tileUrl}</td>
+                            <td>[ {tile.quantity} ]</td>
+                            <td>[ {tile.price.toFixed(2)}$ ]</td>
+                            <td>
+                                <button
+                                    className="cursor-pointer border-2 px-2 py-1"
+                                    onClick={() => dispatch(addTile(tile.id))}
+                                >
+                                    +
+                                </button>
+                                <button
+                                    className="cursor-pointer border-2 px-2 py-1"
+                                    onClick={() => dispatch(removeTile(tile.id))}
+                                >
+                                    -
+                                </button>
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
-            <div className="flex justify-between">
-                <div>Add new Tile to card</div>
-                <div>
-                    <p>Subtotal:</p>
-                    <p>Shipping:</p>
-                    <p>Grand Total:</p>
+            <div className="flex">
+                <AddTile />
+                <div className="ml-auto">
+                    <p>Subtotal: {subtotal}</p>
+                    <p>Shipping: {shipping}</p>
+                    <p>Grand Total: {grandTotal}</p>
                 </div>
             </div>
         </>
