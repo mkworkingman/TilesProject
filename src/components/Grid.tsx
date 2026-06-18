@@ -10,8 +10,6 @@ export default function Grid() {
     const COLUMNS = 7
     const ROWS = 7
 
-    console.log(tiles)
-
     return (
         <div className="flex">
             <div className="w-fit border">
