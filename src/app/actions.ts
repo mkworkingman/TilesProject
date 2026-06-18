@@ -22,9 +22,6 @@ export async function sendData(_: unknown, formData: FormData): Promise<OrderSta
     const rawData = Object.fromEntries(formData) as Record<string, string>
     const result = OrderSchema.safeParse(rawData)
 
-    console.log(rawData)
-    console.log(result)
-
     if (!result.success) {
         return {
             errors: z.flattenError(result.error).fieldErrors,
