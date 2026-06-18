@@ -15,7 +15,7 @@ type OrderField =
 
 export type OrderState = {
     errors: Partial<Record<OrderField, string[]>>
-    rawData: Record<OrderField, string>
+    rawData: Partial<Record<OrderField, string>>
 } | null
 
 export async function sendData(_: unknown, formData: FormData): Promise<OrderState> {
