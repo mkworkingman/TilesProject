@@ -1,5 +1,7 @@
 'use client'
 
+import { PaymentProps } from '@/app/page'
+
 const handleCardChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const digits = e.target.value.replace(/\D/g, '').slice(0, 16)
     e.target.value = digits.replace(/(\d{4})/g, '$1 ').trim()
@@ -24,7 +26,7 @@ const handleCvvChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.target.value = e.target.value.replace(/\D/g, '').slice(0, 4)
 }
 
-export default function Payment() {
+export default function Payment({ state }: PaymentProps) {
     return (
         <>
             <input
@@ -35,7 +37,11 @@ export default function Payment() {
                 inputMode="numeric"
                 form="send-form"
                 required
+                defaultValue={state?.rawData?.cardnumber}
             />
+            {state?.errors?.cardnumber?.[0] && (
+                <p className="text-amber-800">{state?.errors?.cardnumber?.[0]}</p>
+            )}
             <input
                 name="expirationdate"
                 onChange={handleExpChange}
@@ -45,7 +51,11 @@ export default function Payment() {
                 placeholder="MM/YY"
                 form="send-form"
                 required
+                defaultValue={state?.rawData?.expirationdate}
             />
+            {state?.errors?.expirationdate?.[0] && (
+                <p className="text-amber-800">{state?.errors?.expirationdate?.[0]}</p>
+            )}
             <input
                 name="cvv"
                 onChange={handleCvvChange}
@@ -55,7 +65,9 @@ export default function Payment() {
                 placeholder="cvv"
                 form="send-form"
                 required
+                defaultValue={state?.rawData?.cvv}
             />
+            {state?.errors?.cvv?.[0] && <p className="text-amber-800">{state?.errors?.cvv?.[0]}</p>}
             <fieldset>
                 <legend>Select payment method</legend>
                 <label>
@@ -64,20 +76,38 @@ export default function Payment() {
                         name="payment"
                         value="debit"
                         form="send-form"
-                        defaultChecked
+                        defaultChecked={(state?.rawData?.payment ?? 'debit') === 'debit'}
                     />
                     Debit Card
                 </label>
                 <label>
-                    <input type="radio" name="payment" value="paypal" form="send-form" />
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="paypal"
+                        form="send-form"
+                        defaultChecked={state?.rawData?.payment === 'paypal'}
+                    />
                     PayPal
                 </label>
                 <label>
-                    <input type="radio" name="payment" value="applepay" form="send-form" />
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="applepay"
+                        form="send-form"
+                        defaultChecked={state?.rawData?.payment === 'applepay'}
+                    />
                     Apple Pay
                 </label>
                 <label>
-                    <input type="radio" name="payment" value="bank" form="send-form" />
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="bank"
+                        form="send-form"
+                        defaultChecked={state?.rawData?.payment === 'bank'}
+                    />
                     Bank Transfer
                 </label>
             </fieldset>

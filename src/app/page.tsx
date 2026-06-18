@@ -11,6 +11,8 @@ export interface SummaryProps {
     pending: boolean
 }
 
+export type PaymentProps = Pick<SummaryProps, 'state'>
+
 export default function Home() {
     const [state, formAction, pending] = useActionState(sendData, null)
 
@@ -18,9 +20,9 @@ export default function Home() {
         <div className="uppercase">
             <OrderFormLogo />
             <Summary state={state} formAction={formAction} pending={pending} />
-            <ProjectNotes />
+            <ProjectNotes defaultValue={state?.rawData?.notes} />
             <Cart />
-            <Payment />
+            <Payment state={state} />
             <Grid />
         </div>
     )

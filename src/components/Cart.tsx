@@ -36,7 +36,6 @@ export default function Cart() {
                                 />
                             </td>
                             <td>
-                                {' '}
                                 <Image
                                     src={`/${tile.tileUrl}.jpg`}
                                     alt=""

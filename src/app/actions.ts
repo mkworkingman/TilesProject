@@ -2,9 +2,20 @@
 import { OrderSchema } from './schema'
 import { z } from 'zod'
 
+type OrderField =
+    | 'name'
+    | 'phone'
+    | 'email'
+    | 'address'
+    | 'notes'
+    | 'cardnumber'
+    | 'expirationdate'
+    | 'cvv'
+    | 'payment'
+
 export type OrderState = {
-    errors: Record<string, string[]>
-    rawData: Record<string, string>
+    errors: Partial<Record<OrderField, string[]>>
+    rawData: Record<OrderField, string>
 } | null
 
 export async function sendData(_: unknown, formData: FormData): Promise<OrderState> {
