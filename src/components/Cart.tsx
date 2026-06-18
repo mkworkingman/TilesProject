@@ -2,6 +2,7 @@
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import { addTile, removeTile, selectActiveTiles, selectTotals } from '@/store/tilesSlice'
 import { AddTile } from './ui'
+import Image from 'next/image'
 
 export default function Cart() {
     const tiles = useAppSelector(selectActiveTiles)
@@ -26,9 +27,24 @@ export default function Cart() {
                             <td>
                                 {tile.collection.name}
                                 <br />
-                                {tile.collection.collectionUrl}
+                                <Image
+                                    src={`/${tile.collection.collectionUrl}.jpg`}
+                                    alt=""
+                                    width={72}
+                                    height={72}
+                                    className="mx-auto border-2 border-black"
+                                />
                             </td>
-                            <td>{tile.tileUrl}</td>
+                            <td>
+                                {' '}
+                                <Image
+                                    src={`/${tile.tileUrl}.jpg`}
+                                    alt=""
+                                    width={92}
+                                    height={92}
+                                    className="mx-auto"
+                                />
+                            </td>
                             <td>[ {tile.quantity} ]</td>
                             <td>[ {tile.price.toFixed(2)}$ ]</td>
                             <td>

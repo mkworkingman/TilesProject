@@ -1,15 +1,12 @@
 'use client'
-import { useActionState } from 'react'
-import { sendData } from '@/app/actions'
+import { SummaryProps } from '@/app/page'
 import { CustomInput, CustomTextarea } from '@/components/ui'
 
 const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.target.value = e.target.value.replace(/[^0-9+\s]/g, '')
 }
 
-export default function Summary() {
-    const [state, formAction, pending] = useActionState(sendData, null)
-
+export default function Summary({ state, formAction, pending }: SummaryProps) {
     return (
         <form action={formAction} id="send-form">
             <CustomInput
