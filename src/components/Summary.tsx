@@ -52,9 +52,9 @@ export default function Summary({ state, formAction, pending, className }: Summa
                 required
             />
 
-            {/* <button className="uppercase" type="submit" disabled={pending}>
+            <button className="uppercase" type="submit" disabled={pending}>
                 {pending ? 'Pending, please wait...' : 'Place secure order'}
-            </button> */}
+            </button>
         </form>
     )
 }
