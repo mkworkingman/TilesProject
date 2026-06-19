@@ -9,7 +9,7 @@ interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {
 export default function CustomInput({ label, name, error, ...props }: CustomInputProps) {
     return (
         <>
-            <div className="flex [--input-color:var(--color-black)] focus-within:[--input-color:var(--color-blue-500)]">
+            <div className="flex text-2xl [--input-color:var(--color-black)] focus-within:[--input-color:var(--color-blue-500)]">
                 <label
                     htmlFor={name}
                     className="cursor-pointer self-end pr-2 leading-none text-(--input-color)"

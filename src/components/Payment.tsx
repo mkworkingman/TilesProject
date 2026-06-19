@@ -1,6 +1,7 @@
 'use client'
 
 import { PaymentProps } from '@/app/page'
+import Image from 'next/image'
 
 const handleCardChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const digits = e.target.value.replace(/\D/g, '').slice(0, 16)
@@ -26,9 +27,9 @@ const handleCvvChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.target.value = e.target.value.replace(/\D/g, '').slice(0, 4)
 }
 
-export default function Payment({ state }: PaymentProps) {
+export default function Payment({ state, className }: PaymentProps) {
     return (
-        <>
+        <div className={className}>
             <input
                 name="cardnumber"
                 onChange={handleCardChange}
@@ -69,48 +70,90 @@ export default function Payment({ state }: PaymentProps) {
             />
             {state?.errors?.cvv?.[0] && <p className="text-amber-800">{state?.errors?.cvv?.[0]}</p>}
             <fieldset>
-                <legend>Select payment method</legend>
-                <label>
-                    <input
-                        type="radio"
-                        name="payment"
-                        value="debit"
-                        form="send-form"
-                        defaultChecked={(state?.rawData?.payment ?? 'debit') === 'debit'}
-                    />
-                    Debit Card
+                <legend className="bg-surface border-2 border-b-0 p-0.5 pl-1 text-2xl tracking-[0.04em]">
+                    Select payment method:
+                </legend>
+                <label className="inline-block h-31 w-41 border-2">
+                    <div className="mx-auto mt-3 w-fit">
+                        <input
+                            type="radio"
+                            className="mr-1 inline h-7 w-7 align-middle accent-black"
+                            name="payment"
+                            value="debit"
+                            form="send-form"
+                            defaultChecked={(state?.rawData?.payment ?? 'debit') === 'debit'}
+                        />
+                        <Image
+                            className="inline h-13 w-23"
+                            alt=""
+                            height={52}
+                            width={92}
+                            src="/credit_card.jpg"
+                        />
+                    </div>
+                    <p className="mt-4 text-center text-[18px]">Credit/Debit Card</p>
                 </label>
-                <label>
-                    <input
-                        type="radio"
-                        name="payment"
-                        value="paypal"
-                        form="send-form"
-                        defaultChecked={state?.rawData?.payment === 'paypal'}
-                    />
-                    PayPal
+                <label className="inline-block h-31 w-41 border-2">
+                    <div className="mx-auto mt-3 w-fit">
+                        <input
+                            type="radio"
+                            className="mr-1 inline h-7 w-7 align-middle accent-black"
+                            name="payment"
+                            value="debit"
+                            form="send-form"
+                            defaultChecked={(state?.rawData?.payment ?? 'debit') === 'debit'}
+                        />
+                        <Image
+                            className="inline h-13 w-23"
+                            alt=""
+                            height={52}
+                            width={92}
+                            src="/paypal.jpg"
+                        />
+                    </div>
+                    <p className="mt-4 text-center text-[18px]">PayPal</p>
                 </label>
-                <label>
-                    <input
-                        type="radio"
-                        name="payment"
-                        value="applepay"
-                        form="send-form"
-                        defaultChecked={state?.rawData?.payment === 'applepay'}
-                    />
-                    Apple Pay
+                <label className="inline-block h-31 w-41 border-2">
+                    <div className="mx-auto mt-3 w-fit">
+                        <input
+                            type="radio"
+                            className="mr-1 inline h-7 w-7 align-middle accent-black"
+                            name="payment"
+                            value="debit"
+                            form="send-form"
+                            defaultChecked={(state?.rawData?.payment ?? 'debit') === 'debit'}
+                        />
+                        <Image
+                            className="inline h-13 w-23"
+                            alt=""
+                            height={52}
+                            width={92}
+                            src="/apple_pay.jpg"
+                        />
+                    </div>
+                    <p className="mt-4 text-center text-[18px]">Apple Pay</p>
                 </label>
-                <label>
-                    <input
-                        type="radio"
-                        name="payment"
-                        value="bank"
-                        form="send-form"
-                        defaultChecked={state?.rawData?.payment === 'bank'}
-                    />
-                    Bank Transfer
+                <label className="inline-block h-31 w-41 border-2">
+                    <div className="mx-auto mt-3 w-fit">
+                        <input
+                            type="radio"
+                            className="mr-1 inline h-7 w-7 align-middle accent-black"
+                            name="payment"
+                            value="debit"
+                            form="send-form"
+                            defaultChecked={(state?.rawData?.payment ?? 'debit') === 'debit'}
+                        />
+                        <Image
+                            className="inline h-13 w-23"
+                            alt=""
+                            height={52}
+                            width={92}
+                            src="/bank_transfer.jpg"
+                        />
+                    </div>
+                    <p className="mt-4 text-center text-[18px]">Bank Transfer</p>
                 </label>
             </fieldset>
-        </>
+        </div>
     )
 }

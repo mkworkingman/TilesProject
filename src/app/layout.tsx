@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
-import { Quicksand } from 'next/font/google'
+import { Oswald } from 'next/font/google'
 import './globals.css'
 import StoreProvider from '@/store/StoreProvider'
 import { Header } from '@/components/ui'
 
-const quicksand = Quicksand({
+const oswald = Oswald({
     subsets: ['latin'],
     weight: '700',
 })
@@ -20,11 +20,11 @@ export default function RootLayout({
     children: React.ReactNode
 }>) {
     return (
-        <html lang="en" className={`${quicksand.className} h-full antialiased`}>
+        <html lang="en" className={`${oswald.className} h-full antialiased`}>
             <body className="bg-base flex min-h-full flex-col">
                 <StoreProvider>
                     <Header />
-                    <main className="p-14">{children}</main>
+                    <main className="p-14 pt-17">{children}</main>
                 </StoreProvider>
             </body>
         </html>

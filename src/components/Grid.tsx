@@ -2,7 +2,7 @@ import { useAppSelector, useAppDispatch } from '@/store/hooks'
 import { selectTile, placeTile, selectSelectedTileId, selectCells } from '@/store/gridSlice'
 import { selectActiveTiles } from '@/store/tilesSlice'
 
-export default function Grid() {
+export default function Grid({ className }: { className?: string }) {
     const dispatch = useAppDispatch()
     const tiles = useAppSelector(selectActiveTiles)
     const selectedTileId = useAppSelector(selectSelectedTileId)
@@ -11,7 +11,7 @@ export default function Grid() {
     const ROWS = 7
 
     return (
-        <div className="flex">
+        <div className={`${className} flex`}>
             <div className="w-fit border">
                 {Array.from({ length: ROWS }, (_, rowIndex) => (
                     <div key={rowIndex} className="flex">
