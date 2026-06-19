@@ -1,0 +1,43 @@
+@media (min-width: 1376px) {
+    .base {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+            'logo logo logo'
+            'cart visualGrid summary'
+            'cart visualGrid projectNotes'
+            'cart visualGrid payment';
+        gap: 1rem;
+    }
+}
+
+.logo {
+    grid-area: logo;
+}
+
+.summary {
+    grid-area: summary;
+}
+
+.cart {
+    grid-area: cart;
+}
+
+.payment {
+    grid-area: payment;
+}
+
+.projectNotes {
+    grid-area: projectNotes;
+}
+
+.grid {
+    grid-area: visualGrid;
+    display: none;
+}
+
+@media (min-width: 1376px) {
+    .grid {
+        display: block;
+    }
+}

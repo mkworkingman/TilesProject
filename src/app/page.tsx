@@ -18,8 +18,8 @@ export default function Home() {
     const [state, formAction, pending] = useActionState(sendData, null)
 
     return (
-        <div className="uppercase">
-            <OrderFormLogo />
+        <div className={`${style.base} uppercase`}>
+            <OrderFormLogo className={`${style.logo}`} />
             <Summary
                 className={`${style.summary} mt-10 mb-4 px-1`}
                 state={state}
